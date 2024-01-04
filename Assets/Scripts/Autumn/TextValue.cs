@@ -11,12 +11,18 @@ public class TextValue : MonoBehaviour
     public Move targetScript;
     public Animator animator;
 
+
+
+    public bool flag = false;
+
     void Update()
     {
         score = targetScript.score;
         textComponent.text = score.ToString();
-        if(score == 2)
+        if(score == 2&&!flag)
         {
+            flag = true;
+            //PlayerPrefs.SetInt("unlockedLevelIndex", 3);
             animator.Play("Fadein");
         }
     }

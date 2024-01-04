@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class ReturnBack : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Animator animator;
+
+    public Transform dieUI;
     void Start()
     {
         
@@ -16,8 +19,17 @@ public class ReturnBack : MonoBehaviour
     {
         
     }
-    public void ReturnBackButton()
+    public void BacktoChooseButton()
     {
+        PlayerPrefs.SetInt("unlockedLevelIndex", 3);
         SceneManager.LoadScene("FourSeasons");
+
+    }
+    public void ReturnButton()
+    {
+        //animator.Play("Fadeout");
+        dieUI.gameObject.SetActive(false);
+
+
     }
 }

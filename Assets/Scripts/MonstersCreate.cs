@@ -27,7 +27,7 @@ public class MonstersCreate : MonoBehaviour
         // 重复生成怪物
         InvokeRepeating("CreatEnemy", 0.5F, intervalTime);
 
-        enemyTotalNum = 7;
+        enemyTotalNum = 20;
 
         /*// 获取初始预制体上的脚本组件
         GhostControl initialMonsterScript = targetEnemy.GetComponent<GhostControl>();
@@ -62,10 +62,10 @@ public class MonstersCreate : MonoBehaviour
             }
 
             Vector3 randomPoint = GetRandomPoint(minX, maxX, minY, maxY, minZ, maxZ);
-            Debug.Log("11111");
+            //Debug.Log("11111");
             if (IsInWalkableArea(randomPoint))
             {
-                Debug.Log("2222");
+                //Debug.Log("2222");
                 GameObject enemy = Instantiate(targetEnemy, randomPoint, Quaternion.identity);
                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
                 float maxHealth = 100;

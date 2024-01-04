@@ -90,6 +90,7 @@ public class SnakeController : MonoBehaviour
         {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             //isDie = true;
+            print("2250");
             UIManager.uiMagr.DieUI();
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerAttackController : MonoBehaviour
@@ -20,6 +21,7 @@ public class PlayerAttackController : MonoBehaviour
     public LayerMask enemyLayer;
 
     private Animator animator;
+
     public Animator Canvasanimator;
 
     public float currentHealth = 100f;
@@ -30,7 +32,11 @@ public class PlayerAttackController : MonoBehaviour
     public GameObject Attack2Effect = null;
 
     public Text text1;
+    public Text textnum;
 
+    public int num;
+    public Animator animator2;
+    public GameObject dieUIBack;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,10 +47,25 @@ public class PlayerAttackController : MonoBehaviour
         healthSlider.value = currentHealth; // 将血条Slider的当前值设为当前血量值
 
 
-}
-
+    }
+    public void KillGhost()
+    {
+        num++;
+        textnum.text = num.ToString();
+        if (num == 1)
+        {
+            animator2.Play("Fadein");
+            PlayerPrefs.SetInt("unlockedLevelIndex", 2);
+        }
+        
+    }
+    public void BacktoChoose1()
+    {
+        SceneManager.LoadScene("FourSeasons");
+    }
     void Update()
     {
+
         healthSlider.value = currentHealth; // 将血条Slider的当前值设为当前血量值
         text1.text = currentHealth.ToString();
         if (Input.GetKeyDown(KeyCode.H))
@@ -157,6 +178,14 @@ public class PlayerAttackController : MonoBehaviour
     {
         Debug.Log("Die");
         //Time.timeScale = 0;
+        /*if (num < 1)
+        {
+            dieUIBack.SetActive(false);
+        }
+        else
+        {
+            dieUIBack.SetActive(true);
+        }*/
         Canvasanimator.Play("Fadein");
         StartCoroutine(DieWait5());
 

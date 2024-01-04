@@ -15,8 +15,13 @@ public class EnemyController : MonoBehaviour
     public Slider healthSlider;
 
     public Animator animator;
+    public GameObject player;
+
+    public bool flag;
     void Start()
     {
+
+        flag = false;
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
 
@@ -33,7 +38,10 @@ public class EnemyController : MonoBehaviour
         attack1Damage = damage1;
         attack2Damage = damage2;
     }
+    void Update()
+    {
 
+    }
 
 
 
@@ -41,32 +49,40 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth -= attack1Damage;
         healthSlider.value = currentHealth;
-        Debug.Log(healthSlider.value);
-        if (currentHealth <= 0f)
+
+        if (currentHealth <= 0f && !flag)
         {
+            flag = true;
             Die();
+
         }
     }
     public void Attack2Damage()
     {
         currentHealth -= attack2Damage;
         healthSlider.value = currentHealth;
-        Debug.Log(healthSlider.value);
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f && !flag)
         {
+            flag = true;
             Die();
+
         }
+
     }
 
     void Die()
     {
         // 处理怪物死亡
         animator.Play("Die");
-        StartCoroutine(DieWait2());
+        print("diedieidie");
+        player.GetComponent<PlayerAttackController>().KillGhost();
+        Destroy(gameObject);
+        //StartCoroutine(DieWait2());
     }
 
     IEnumerator DieWait2()
     {
+
         yield return new WaitForSeconds(1f); // 等待两秒
         Destroy(gameObject);
     }

@@ -9,14 +9,23 @@ public class UIManager : MonoBehaviour
     public static UIManager uiMagr;
     public Text number_txt;//分数
     public Button refreshBtn;//重新开始按钮
-    public Transform dieUI;//游戏失败面板
+    //public Transform dieUI;//游戏失败面板
     public int score;
+    public Animator animator;
+    public Animator animator2;
+
+    public Transform dieui;
+
+    public Transform dieui2;
+
+    public bool flag1 = false;
 
     void Start()
     {
         //初始化
         uiMagr = this;
-        dieUI.gameObject.SetActive(false);
+        dieui.gameObject.SetActive(false);
+        dieui2.gameObject.SetActive(false);
         refreshBtn.onClick.AddListener(Refresh);
         score = 0;
     }
@@ -31,8 +40,9 @@ public class UIManager : MonoBehaviour
         }
         if(score == 2)
         {
+            flag1 = true;
             PlayerPrefs.SetInt("unlockedLevelIndex", 1);
-            SceneManager.LoadScene("FourSeasons");
+            dieui2.gameObject.SetActive(true);
         }
 
     }
@@ -47,7 +57,16 @@ public class UIManager : MonoBehaviour
     //显示死亡UI
     public void DieUI()
     {
-        dieUI.gameObject.SetActive(true);
+        dieui.gameObject.SetActive(true);
+        if(!flag1)
+        {
+            dieui2.gameObject.SetActive(false);
+        }
+        else
+        {
+            dieui2.gameObject.SetActive(true);
+        }
+
     }
 
     //刷新
