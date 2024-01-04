@@ -17,27 +17,35 @@ public class ButtonClicks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    
 
+    }
 
 
     public void startgame()
     {
         animator.Play("Fadeout");
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("StartTalk");
     }
     public void optionclick()
     {
         StartCoroutine(Second2OptionClick());
 
     }
+    public void exitclick()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+
+    }
 
     IEnumerator Second2OptionClick()
     {
+        Debug.Log("1111");
         animator.Play("Fadeout");
-        yield return  new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
         animator2.Play("Fadein");
     }
     public void optionreturn()

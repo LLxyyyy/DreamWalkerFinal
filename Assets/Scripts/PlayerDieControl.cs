@@ -13,7 +13,7 @@ public class PlayerDieControl : MonoBehaviour
     }
     public void DieContinueClick()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Summer");
         Time.timeScale = 1;
         Debug.Log("Diecontinue");
 
