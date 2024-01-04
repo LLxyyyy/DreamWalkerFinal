@@ -41,7 +41,7 @@ public class MonstersCreate : MonoBehaviour
     {
 
     }
-
+    
     private void CreatEnemy()
     {
         // 如果玩家存活
@@ -62,9 +62,10 @@ public class MonstersCreate : MonoBehaviour
             }
 
             Vector3 randomPoint = GetRandomPoint(minX, maxX, minY, maxY, minZ, maxZ);
-
+            Debug.Log("11111");
             if (IsInWalkableArea(randomPoint))
             {
+                Debug.Log("2222");
                 GameObject enemy = Instantiate(targetEnemy, randomPoint, Quaternion.identity);
                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
                 float maxHealth = 100;

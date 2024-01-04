@@ -40,16 +40,16 @@ public class Move : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-}
+    }
 
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
     {
-        
+
         // ×ßÂ·
         if (Input.GetKey(KeyCode.W))
         {
-            
+
             ismove = true;
             if (iswalk)
             {
@@ -61,7 +61,7 @@ void Update()
                 transform.Translate(Vector3.forward * Time.deltaTime * runspeed);
             }
 
-/*            Debug.Log("w");*/
+            /*            Debug.Log("w");*/
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -84,7 +84,7 @@ void Update()
 
         if (Input.GetKey(KeyCode.A))
         {
-           
+
             ismove = true;
             if (iswalk)
             {

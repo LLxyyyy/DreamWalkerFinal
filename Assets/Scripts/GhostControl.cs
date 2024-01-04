@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GhostControl : MonoBehaviour
@@ -10,6 +8,13 @@ public class GhostControl : MonoBehaviour
     public Vector3 spawnPosition; // 怪物的出生点
     public float walkingSpeed; // 怪物在水面上的行走速度
     public float patrolRange; // 巡逻范围
+
+    public float attackRange; // 攻击范围
+    public float attackDamage; // 攻击范围
+    public bool isWaitingForAttack;
+
+    public LayerMask PlayerLayer;
+    public GameObject AttackEffect;
 
     private Animator animator;
     private Rigidbody rb;
@@ -21,8 +26,14 @@ public class GhostControl : MonoBehaviour
         walkingSpeed = 5.0f; // 怪物在水面上的行走速度
         patrolRange = 20f; // 巡逻范围
 
+        attackRange = 7f;
+        attackDamage = 5f;
+        isWaitingForAttack = false;
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+
 
         spawnPosition = transform.position;
 
@@ -36,24 +47,65 @@ public class GhostControl : MonoBehaviour
             patrolPoints.Add(GetRandomPointOnWaterSurface(spawnPosition, patrolRange));
         }
 
-    }
+        // 在范围内每隔 1 秒攻击一次玩家
+        InvokeRepeating("Attack", 0f, 1f);
 
+    }
+    void Attack()
+    {
+        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
+        if (distanceToPlayer <= 7)
+        {
+            StartCoroutine(WaitAttack());
+        }
+
+
+    }
+    IEnumerator WaitAttack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, PlayerLayer);
+        animator.Play("Attack");
+        yield return new WaitForSeconds(0.3f); // 等待攻击动画完成
+        if (hitEnemies.Length > 0)
+        {
+            Collider playerAttack = hitEnemies[0];
+
+            // 处理攻击1伤害
+            PlayerAttackController playerAttackController = playerAttack.GetComponent<PlayerAttackController>();
+            if (playerAttackController != null)
+            {
+                //isAttack1 = true;
+
+                GameObject attack = Instantiate(AttackEffect, playerAttack.transform.position, Quaternion.identity);
+                playerAttackController.TakeDamage(attackDamage);
+                //Debug.Log(attackDamage);
+
+            }
+
+            //isWaitingForAttack = false;
+        }
+        else
+        {
+            // 获取人物当前面向的方向
+            Vector3 direction = transform.forward;
+            // 将方向向前延伸 7 米
+            Vector3 spawnPosition = transform.position + direction * 7f;
+            //animator.Play("Attack");
+            GameObject attack1 = Instantiate(AttackEffect, spawnPosition, Quaternion.identity);
+
+        }
+    }
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
 
-        if (distanceToPlayer > 4 && distanceToPlayer < 25)
+        if (distanceToPlayer > 7 && distanceToPlayer < 25)
         {
             Track();
-            Debug.Log("track");
+            //Debug.Log("track");
         }
-        else if (distanceToPlayer <= 4)
-        {
-            Attack();
-            Debug.Log("attack");
 
-        }
-        else
+        else if (distanceToPlayer >= 25)
         {
             Patrol();
             //Debug.Log("patrol");
@@ -82,7 +134,7 @@ public class GhostControl : MonoBehaviour
     {
         float distanceToPatrolPoint = Vector3.Distance(transform.position, patrolPoints[currentPatrolIndex]);
 
-        if (distanceToPatrolPoint <1f)
+        if (distanceToPatrolPoint < 1f)
         {
             animator.Play("Idle");
             //Debug.Log(patrolPoints.Count);
@@ -104,11 +156,7 @@ public class GhostControl : MonoBehaviour
         }
     }
 
-    void Attack()
-    {
-        // 攻击
-        animator.Play("Attack");
-    }
+
 
 
 
