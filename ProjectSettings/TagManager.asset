@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - Food
+  - Block
+  - Audio
+  - Item
+  - Star
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - Weapon
   - Terrain
   - WaterAttack
-  - 
+  - Star
   - 
   - 
   - 

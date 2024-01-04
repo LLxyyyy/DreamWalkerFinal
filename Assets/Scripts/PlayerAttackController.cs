@@ -29,7 +29,7 @@ public class PlayerAttackController : MonoBehaviour
     public GameObject Attack1Effect = null;
     public GameObject Attack2Effect = null;
 
-
+    public Text text1;
 
     void Start()
     {
@@ -39,11 +39,14 @@ public class PlayerAttackController : MonoBehaviour
         healthSlider.maxValue = maxHealth; // 最大值为maxHealth
 
         healthSlider.value = currentHealth; // 将血条Slider的当前值设为当前血量值
-    }
+
+
+}
 
     void Update()
     {
         healthSlider.value = currentHealth; // 将血条Slider的当前值设为当前血量值
+        text1.text = currentHealth.ToString();
         if (Input.GetKeyDown(KeyCode.H))
         {
             Attack1();
@@ -159,5 +162,8 @@ public class PlayerAttackController : MonoBehaviour
 
     }
 
-
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
 }

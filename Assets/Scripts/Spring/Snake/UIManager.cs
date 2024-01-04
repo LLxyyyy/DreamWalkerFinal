@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Text number_txt;//分数
     public Button refreshBtn;//重新开始按钮
     public Transform dieUI;//游戏失败面板
+    public int score;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
         uiMagr = this;
         dieUI.gameObject.SetActive(false);
         refreshBtn.onClick.AddListener(Refresh);
+        score = 0;
     }
 
     // Update is called once per frame
@@ -27,12 +29,19 @@ public class UIManager : MonoBehaviour
         {
             Application.Quit();
         }
+        if(score == 2)
+        {
+            PlayerPrefs.SetInt("unlockedLevelIndex", 1);
+            SceneManager.LoadScene("FourSeasons");
+        }
+
     }
 
     //修改分数值
     public void SetNumber(int value)
     {
         number_txt.text = value.ToString();
+        score = value;
     }
 
     //显示死亡UI

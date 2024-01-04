@@ -21,7 +21,12 @@ public class Move : MonoBehaviour
 
     private Animator animator;
 
+    public int score = 0;
 
+    public void AddScore()
+    {
+        score++;
+    }
 
     // Start is called before the first frame update
     void Start()
