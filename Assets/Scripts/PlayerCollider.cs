@@ -21,7 +21,10 @@ public class PlayerCollider : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Physics.IgnoreCollision(characterCollider, waterCollider, true);
+        if (waterCollider != null)
+        {
+            Physics.IgnoreCollision(characterCollider, waterCollider, true);
+        }
         /*// 检测人物是否在水面上
         bool isInWater = Physics.CheckBox(characterCollider.bounds.center, characterCollider.bounds.extents, transform.rotation, waterLayer);
 
