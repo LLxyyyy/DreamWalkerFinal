@@ -6,7 +6,7 @@ public class PlayerDieControl : MonoBehaviour
     // Start is called before the first frame update
     public void DieReturnClick()
     {
-        SceneManager.LoadScene("Start");
+        SceneManager.LoadScene("FourSeasons");
         Time.timeScale = 1;
         Debug.Log("Diereturn");
 
