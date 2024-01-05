@@ -3943,8 +3943,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 547718286}
-  - component: {fileID: 547718285}
-  - component: {fileID: 547718288}
   - component: {fileID: 547718287}
   m_Layer: 0
   m_Name: Control
@@ -3953,18 +3951,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &547718285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547718284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3f98f6ac2437949bc99e1e4056223a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &547718286
 Transform:
   m_ObjectHideFlags: 0
@@ -4075,19 +4061,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &547718288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547718284}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bafcf5648277730439c2626daa4d0948, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 547718287}
 --- !u!1001 &549365003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15140,7 +15113,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547718285}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerDieControl, Assembly-CSharp
         m_MethodName: DieReturnClick
         m_Mode: 1
@@ -18979,7 +18952,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547718285}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerDieControl, Assembly-CSharp
         m_MethodName: DieContinueClick
         m_Mode: 1
