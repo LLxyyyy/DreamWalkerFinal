@@ -8,7 +8,7 @@ public class StartSetting : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("unlockedLevelIndex", 0);
-        print("aaaaaaaaaa");
+        //print("aaaaaaaaaa");
     }
 
     // Update is called once per frame

@@ -7,6 +7,6 @@ public class Select4 : MonoBehaviour
 {
     public void OnLoginButtonClick()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("WinterIntro");
     }
 }

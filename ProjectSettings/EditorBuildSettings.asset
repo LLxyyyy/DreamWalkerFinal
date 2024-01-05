@@ -15,15 +15,33 @@ EditorBuildSettings:
     path: Assets/Scenes/FourSeasons.unity
     guid: 16f982fe8a00d134cb699eb65d736cbe
   - enabled: 1
+    path: Assets/Scenes/SpringIntro.unity
+    guid: b50e3339cab02d34099aaffb148277b0
+  - enabled: 1
     path: Assets/Scenes/Spring.unity
     guid: a8b370b8f62780c4282ccbe16798da88
   - enabled: 1
     path: Assets/Scenes/SnakePlay.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/SummerIntro.unity
+    guid: 8e1e5b513b04e4842915b45eb093dfc7
+  - enabled: 1
     path: Assets/Scenes/Summer.unity
     guid: 7a4b408c15a62954bacc4c984aee2699
   - enabled: 1
+    path: Assets/Scenes/AutumnIntro.unity
+    guid: 8a6506b67828fdf458352d137cb841bc
+  - enabled: 1
     path: Assets/Scenes/Autumn.unity
     guid: a7668a17ef73ad74793425e1d7ff22b2
+  - enabled: 1
+    path: Assets/Scenes/WinterIntro.unity
+    guid: 1706e1c5a7ce48149a0fedea508b8b88
+  - enabled: 1
+    path: Assets/Scenes/Winter.unity
+    guid: 0d1c2e341c17a7447b04b2297424bd96
+  - enabled: 1
+    path: Assets/gameover.unity
+    guid: 3d0e2131e7417624eb3a43d894f1d2e4
   m_configObjects: {}

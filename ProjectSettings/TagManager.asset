@@ -10,6 +10,7 @@ TagManager:
   - Audio
   - Item
   - Star
+  - talk
   layers:
   - Default
   - TransparentFX

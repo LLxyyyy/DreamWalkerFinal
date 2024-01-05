@@ -8,6 +8,6 @@ public class Select1 : MonoBehaviour
     public void OnLoginButtonClick()
     {
         Debug.Log("1925");
-        SceneManager.LoadScene("Spring");
+        SceneManager.LoadScene("SpringIntro");
     }
 }

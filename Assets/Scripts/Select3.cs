@@ -7,6 +7,6 @@ public class Select3 : MonoBehaviour
 {
     public void OnLoginButtonClick()
     {
-        SceneManager.LoadScene("Autumn");
+        SceneManager.LoadScene("AutumnIntro");
     }
 }
