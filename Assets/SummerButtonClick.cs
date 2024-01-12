@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class StartSetting : MonoBehaviour
+public class SummerButtonClick : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
-        PlayerPrefs.SetInt("unlockedLevelIndex", 3);
+        
     }
 
     // Update is called once per frame
@@ -15,4 +17,9 @@ public class StartSetting : MonoBehaviour
     {
         
     }
+    public void ContinueClick()
+    {
+        SceneManager.LoadScene("Summer");
+    }
+
 }

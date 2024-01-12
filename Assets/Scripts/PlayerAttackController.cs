@@ -169,11 +169,11 @@ public class PlayerAttackController : MonoBehaviour
             Die();
         }
     }
-    IEnumerator DieWait5()
+    /*IEnumerator DieWait5()
     {
         yield return new WaitForSeconds(1f); // µÈ´ýÁ½Ãë
         Time.timeScale = 0;
-    }
+    }*/
     public void Die()
     {
         Debug.Log("Die");
@@ -187,7 +187,7 @@ public class PlayerAttackController : MonoBehaviour
             dieUIBack.SetActive(true);
         }*/
         Canvasanimator.Play("Fadein");
-        StartCoroutine(DieWait5());
+        //StartCoroutine(DieWait5());
 
     }
 
